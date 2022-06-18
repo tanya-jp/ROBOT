@@ -93,11 +93,11 @@ class PIDController():
             if abs(delta) > 0.2:
                 move_cmd.linear.x = 0.0
                 move_cmd.angular.z = 0.3
-                # rospy.loginfo(f"ROTATE")
+                rospy.loginfo(f"ROTATE")
             else:
                 move_cmd.linear.x = self.v
                 move_cmd.angular.z = 0.0
-                # rospy.loginfo(f"GOOOOOOOOO")
+                rospy.loginfo(f"GO")
 
             self.cmd_vel.publish(move_cmd)
             # self.r.sleep() 
@@ -105,7 +105,6 @@ class PIDController():
 
     def follow_wall(self):
 
-        # rospy.loginfo(f"WALL")
         
         d = self.distance_from_wall()    
         sum_i_theta = 0
@@ -118,20 +117,12 @@ class PIDController():
         front_d = self.front_distance_from_wall()
         if front_d <= (self.D + 0.1):
             front_d = self.front_distance_from_wall()
-            # rospy.loginfo(f"$$$$$$$$$$ : {front_d}")
-            # rospy.loginfo(f"WALL")
             twist = Twist()
             twist.angular.z = -0.2
-            # move_cmd.linear.x = 0.0
             self.cmd_vel.publish(twist)
-            # twist = Twist()
-            # move_cmd.linear.x = self.v
-            # move_cmd.angular.z = 0.0
-            # self.cmd_vel.publish(twist)
             
         else:
             self.cmd_vel.publish(move_cmd)
-            # rospy.loginfo(f"OK")
             err = d - self.D
             self.errs.append(err)
             sum_i_theta += err * self.dt
@@ -154,9 +145,7 @@ class PIDController():
             goal_d = self.distance_from_goal()
             if goal_d.real > 0.35:
                 front_d = self.front_distance_from_wall()
-                # rospy.loginfo(f"@@@@@@@@@@@front_d : {front_d-self.D}")
                 d = self.distance_from_wall()
-                # rospy.loginfo(f"@@@@@@@@@@@d : {d-self.D}")
                 rospy.loginfo(f"#GOAL : {goal_d}")
                 if d > self.D + 0.2:
                     self.go_to_goal()

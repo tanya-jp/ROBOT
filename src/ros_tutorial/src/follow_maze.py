@@ -50,22 +50,10 @@ class PIDController():
         move_cmd.angular.z = 0
         move_cmd.linear.x = self.v
 
-        # front_d = self.front_distance_from_wall()
-        # rospy.loginfo(f"%%%%%%%%%%% : {front_d}")
-
         while not rospy.is_shutdown():
             front_d = self.front_distance_from_wall()
-            # print("**********")
-            # rospy.loginfo(f"%%%%%%%%%%% : {front_d}")
-            # rospy.loginfo(f"&&&&&&&&&&&&&&& : {front_d}")
-            # print(front_d)
-            # rotation loop
-            # twist = Twist()
-            # twist.angular.z = 1
-            # self.cmd_vel.publish(twist)
             if front_d <= self.D :
                 front_d = self.front_distance_from_wall()
-                rospy.loginfo(f"$$$$$$$$$$ : {front_d}")
                 twist = Twist()
                 twist.angular.z = -0.092
                 self.cmd_vel.publish(twist)

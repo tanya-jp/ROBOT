@@ -1,7 +1,7 @@
 <launch>
   <node pkg="sen_one" type="part1-1.py" name="part1-1" output="screen">        
   </node>
-  <node pkg="sen_one" type="auto_return.py" name="auto_return" output="screen">        
+  <node pkg="sen_one" type="auto_rotate.py" name="auto_rotate" output="screen">        
   </node>
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
   <arg name="x_pos" default="0.0"/>
