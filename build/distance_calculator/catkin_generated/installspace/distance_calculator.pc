@@ -1,0 +1,8 @@
+prefix=/home/tanya/Desktop/catkin_ws/install
+
+Name: distance_calculator
+Description: Description of distance_calculator
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
