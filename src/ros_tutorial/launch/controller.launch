@@ -1,7 +1,8 @@
 <launch>
 
 
-    <node pkg="ros_tutorial" type="controller.py" name="controller" output="screen">
+    <node pkg="ros_tutorial" type="go_any_shape.py" name="go_any_shape" output="screen">
+    <!-- <node pkg="ros_tutorial" type="go_square.py" name="go_square" output="screen"> -->
         <!-- <param name="linear_speed" value="$(arg linear_speed)" /> -->
         <param name="linear_speed" value="0.2" />
         <param name="angular_speed" value="-0.5"/>
